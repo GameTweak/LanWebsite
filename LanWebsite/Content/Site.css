@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+div.bodybackground {
+    background-image: url(../Materials/Images/testgif.gif);
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
