@@ -1,32 +1,40 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    min-height:100vh;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+
+video {
+    max-width:100%;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+header.group-intro {
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    background-color:black;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+header.group-intro .contents {
+    background-color: rgba(0,0,0,0.75);
+    height: 96vh;
+    width: 90vw;
+    padding: 2vh 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
-div.bodybackground {
-    background-image: url(../Materials/Images/testgif.gif);
-    background-size: cover;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+header.group-intro video.intro-bg {
+    display: block;
+    min-height: 100vh;
+    min-width: 100vw;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }

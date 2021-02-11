@@ -139,6 +139,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Materials\Images\testgif.gif" />
+    <Content Include="Materials\Video\hd0051.mov" />
+    <Content Include="Materials\Video\Sendmeyour.mp4" />
+    <Content Include="Materials\Video\slp_intro_bg.mp4" />
+    <Content Include="Materials\Video\tvscreen.mp4" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
