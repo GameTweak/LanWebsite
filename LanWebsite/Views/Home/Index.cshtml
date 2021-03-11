@@ -1,12 +1,50 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    
+    var imagePath = Server.MapPath("~/Materials/Images/Sponsors");
+    var files = Directory.GetFiles(imagePath);
 }
+<script src="~/Scripts/LayoutScripts.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <header class="group-intro">
     <video loop muted autoplay poster="" class="intro-bg">
-        <source src="~/Materials/Video/slp_intro_bg.mp4"/>
+        <source src="~/Materials/Video/OOF_1_1.mp4" />
     </video>
     <div class="contents">
-        <a>AHHHHHHH</a>
-    </div>
+        <img class="pageLogo" src="~/Materials/Images/logo1.svg" />
+        <h1 class="headline">9. - 11. SEPTEMBER 2021</h1>
+        <h2 class="subheadline">BESTIL BILLET FØR 1. SEPTEMBER OG FÅ EARLY BIRD RABAT</h2>
+        <div class="redirectbox">
+            <p><a href="#two" class="redirects">LÆS MERE</a> - <a href="#three" class="redirects">BESTIL BILLET</a> - <a class="redirects">OM OS</a></p>
 </header>
+<div class="main-page">
+    <div class="top-nav">
+        <div class="">
+            <img class="nav-img" src="~/Materials/Images/logo1.svg" />
+        </div>
+    </div>
+    <div class="justify-content-center">
+        <h1 class="sponsors">Sponsors</h1>
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var file in files)
+        {
+            <div class="col-3 sponsors">
+                <img class="sponsors-img" src="~/Materials/Images/Sponsors/@Path.GetFileName(file)" />
+            </div>
+        }
+    </div>
+    <!--
+        <div>
+            <h1>Hvor afholdes det henne?</h1>
+            <iframe src="https://bit.ly/3bxaDGD" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    -->
+    <!--
+    <div class="contents">
+        <a class="twitter-timeline" data-width="400" data-height="500" data- data-theme="dark" href="https://twitter.com/dummy_lan?ref_src=twsrc%5Etfw"></a>
+    </div>
+    -->
+</div>
