@@ -1,33 +1,29 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    
+
     var imagePath = Server.MapPath("~/Materials/Images/Sponsors");
     var files = Directory.GetFiles(imagePath);
 }
 <script src="~/Scripts/LayoutScripts.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 <header class="group-intro">
-    <video loop muted autoplay poster="" class="intro-bg">
-        <source src="~/Materials/Video/OOF_1_1.mp4" />
-    </video>
-    <div class="contents">
-        <img class="pageLogo" src="~/Materials/Images/logo1.svg" />
-        <h1 class="headline">9. - 11. SEPTEMBER 2021</h1>
-        <h2 class="subheadline">BESTIL BILLET FØR 1. SEPTEMBER OG FÅ EARLY BIRD RABAT</h2>
-        <div class="redirectbox">
-            <p><a href="#two" class="redirects">LÆS MERE</a> - <a href="#three" class="redirects">BESTIL BILLET</a> - <a class="redirects">OM OS</a></p>
-</header>
+            <video loop muted autoplay poster="" class="intro-bg">
+                <source src="~/Materials/Video/among-us.mp4" />
+            </video>
+            <div class="contents">
+                <img class="pageLogo" src="~/Materials/Images/logo1.svg" />
+                <h1 class="headline">10. - 12. SEPTEMBER 2021</h1>
+                <h2 class="subheadline">BESTIL BILLET FØR 1. SEPTEMBER OG FÅ EARLY BIRD RABAT</h2>
+                <div class="redirectbox">
+                    <p><a href="#two" class="redirects">LÆS MERE</a> - <a href="~/Billing/Index" class="redirects">BESTIL BILLET</a> - <a class="redirects">OM OS</a></p>
+        </header>
 <div class="main-page">
-    <div class="top-nav">
-        <div class="">
-            <img class="nav-img" src="~/Materials/Images/logo1.svg" />
-        </div>
-    </div>
     <div class="justify-content-center">
         <h1 class="sponsors">Sponsors</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="sponser-box row justify-content-center">
         @foreach (var file in files)
         {
             <div class="col-3 sponsors">
@@ -35,16 +31,63 @@
             </div>
         }
     </div>
-    <!--
-        <div>
-            <h1>Hvor afholdes det henne?</h1>
-            <iframe src="https://bit.ly/3bxaDGD" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <section>
+        <div class="container">
+            <div class="accordian">
+                <div class="accordian-item" id="question1">
+                    <a class="accordian-link" href="#question1">
+                        Er det muligt at få en soveplads uden at købe VIP eller ULTRA?
+                        <ion-icon class="icon-add" name="add"></ion-icon>
+                        <ion-icon class="icon-remove" name="remove"></ion-icon>
+                    </a>
+                    <div class="answer">
+                        <p>
+                            Det er selvfølgelig muligt at finde en soveplads uden at købe VIP eller ULTRA, men fordelen ved disse to er at man er sikker på hvor man kommer til at sove, desuden garantere vi at det er et sted hvor man kan få ro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordian-item" id="question2">
+                    <a class="accordian-link" href="#question2">
+                        Hvordan tilmelder man sig turneringerne?
+                        <ion-icon class="icon-add" name="add"></ion-icon>
+                        <ion-icon class="icon-remove" name="remove"></ion-icon>
+                    </a>
+                    <div class="answer">
+                        <p>
+                            Man tilmelder sig on site ved at kontakte administratorer når der bliver annonceret at man kan tilmelde sig turneringer.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordian-item" id="question3">
+                    <a class="accordian-link" href="#question3">
+                        Hvorfor koster det penge at tilmelde sig turneringer?
+                        <ion-icon class="icon-add" name="add"></ion-icon>
+                        <ion-icon class="icon-remove" name="remove"></ion-icon>
+                    </a>
+                    <div class="answer">
+                        <p>
+                            Pengene det koster at tilmelde sig en turnering går til præmien man får for at vinde. Dvs, desto flere der tilmelder sig desto større er præmien!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordian-item" id="question4">
+                    <a class="accordian-link" href="#question4">
+                        Hvorfor lave et så stort lan party, kunne i ikke bare lave et mindre og mere lokalt lan party?
+                        <ion-icon class="icon-add" name="add"></ion-icon>
+                        <ion-icon class="icon-remove" name="remove"></ion-icon>
+                    </a>
+                    <div class="answer">
+                        <p>
+                            Vi her hos Lan360 vil gerne at man ved vores lan har mulighed for at kunne møde og skabe nye venskaber og samtidigt øge sammenholdet i allerede eksisterende venskaber. Dette gør vi i form af events til selve lan partiet, men også i form af turneringer. Vi mener derfor at jo flere der møder op desto bedre.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    -->
-    <!--
-    <div class="contents">
-        <a class="twitter-timeline" data-width="400" data-height="500" data- data-theme="dark" href="https://twitter.com/dummy_lan?ref_src=twsrc%5Etfw"></a>
-    </div>
-    -->
+    </section>
 </div>

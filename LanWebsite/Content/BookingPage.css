@@ -1,0 +1,82 @@
+﻿body {
+}
+#holder {
+    height: 200px;
+    width: 550px;
+    background-color: #F5F5F5;
+    border: 1px solid #A4A4A4;
+    margin-left: 10px;
+}
+
+#place {
+    position: relative;
+    margin: 7px;
+}
+
+#place a {
+    font-size: 0.6em;
+}
+
+#place li {
+    list-style: none outside none;
+    position: absolute;
+}
+
+#place li:hover {
+    background-color: yellow;
+}
+
+#place .seat {
+    background: url("../Materials/Images/Booking/available.svg") no-repeat scroll 0 0 transparent;
+    height: 33px;
+    width: 33px;
+    display: block;
+}
+
+#place .selectedSeat {
+    background-image: url("../Materials/Images/Booking/reserved.svg");
+}
+
+#place .selectingSeat {
+    background-image: url("../Materials/Images/Booking/selected.svg");
+}
+
+#place .row-3, #place .row-4 {
+    margin-top: 10px;
+}
+
+#seatDescription li {
+    list-style: none outside none;
+    padding-left: 35px;
+    height: 35px;
+    float: left;
+}
+
+#overview div {
+    margin-top:30px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%)
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content:center;
+}
+
+.div1 {
+    grid-area: 1 / 2 / 3 / 5;
+}
+
+.div2 {
+    grid-area: 3 / 2 / 4 / 5;
+}
+
+.div3 {
+    grid-area: 1 / 5 / 3 / 6;
+}

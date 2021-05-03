@@ -1,0 +1,46 @@
+﻿body {
+    padding-top:10%;
+}
+
+div.content {
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+}
+
+div.content div.billingcard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding:30px 22px;
+    transition: 0.3s;
+    width: 25%;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    border-radius:10px;
+}
+
+div.content div.billingbox {
+}
+
+div.content h4 {
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 1vh;
+    background: #FFE099;
+    background: -webkit-linear-gradient(#FFE099 0%, #A65A2F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+div.content p {
+    font-size:0.8em;
+    margin-bottom:0;
+}
+
+div.conent div.row {
+    justify-content: center;
+}
+
+div.conent button.choose {
+    background-color: #ff6a00 !important;
+    border-radius: 10px;
+}
