@@ -6,39 +6,106 @@
 }
 <link href="~/Content/BookingPage.css" rel="stylesheet" />
 
-<div class="parent">
-    <div id="holder" class="div1">
+<div class="container"><h1 class="header">Vælg Bord</h1></div>
+
+<div id="bookingbody" class="container">
+    <div id="holder">
         <ul id="place">
             @{
+                <!-- Her starter vores for løkke, som er med til at lave vores borde ud fra informationerne gives i classen settings -->
                 for (int i = 0; i < settings.rows; i++)
                 {
                     for (int j = 0; j < settings.cols; j++)
                     {
+                        <!-- Udregner bord nr. ud fra hvor den er -->
                         int seatNo = (i + j * settings.rows + 1);
+
+                        <!-- Sætter størrelsen på højden og breden af bordene -->
                         String top = "top:" + (i * settings.seatHeight) + "px;";
                         String left = "left:" + (j * settings.seatWidth) + "px";
+
+                        <!-- Her laves en string der angiver styling ud fra det angivet i "settings" classen -->
                         String className = settings.seatCss + " " + settings.rowCssPrefix + i + " " + settings.colCssPrefix + j;
+
+                        <!-- Her placeres vores strings ind i en list element og henter information for en SQL Database -->
                         <li class="@className @status.GetStatus(seatNo)" style="@top @left"><a title="@seatNo"></a></li>
                     }
                 }
             }
         </ul>
     </div>
-    <div id="expl" class="div2">
+</div>
+<!-- Her laves vores knapper og billeder der fortæller hvad de forskellige farver betyder -->
+<div class="BookingContent">
+    <!-- Her er de farvet billeder -->
+    <div id="expl">
         <ul id="seatDescription">
             <li style="background:url('../../Materials/Images/Booking/available.svg') no-repeat scroll 0 0 transparent;">Available Seat</li>
             <li style="background: url('../../Materials/Images/Booking/reserved.svg') no-repeat scroll 0 0 transparent;">Booked Seat</li>
             <li style="background: url('../../Materials/Images/Booking/selected.svg') no-repeat scroll 0 0 transparent;">Selected Seat</li>
         </ul>
     </div>
-    <div id="buttons_pack" class="div3">
+    <!-- Her laves knapperne der siger hvilke er valgte og alle der er reseveret og valgt -->
+    <div id="buttons_pack">
         <input type="button" id="btnShowNew" value="Show Selected Seats" />
         <input type="button" id="btnShow" value="Show All" />
     </div>
 </div>
+<div class="BookingDiv">
+    @using (Html.BeginForm("BookSeat", "Billing", FormMethod.Post))
+    {
+        @Html.TextAreaFor(model => model.SeatID, new { id = "tableNr" })
+        @Html.TextBox("User")
+        <button id="select" runat="server" OnServerClick="Button_Click">Click here</button>
+    }
+</div>
 
 <script>
-    /*
+
+    // Script der siger hvorvidt det valgte bord er optaget
+    $('.' + "@settings.seatCss").click(function () {
+        var str = [];
+        // Tjekker om det bord der blev trykket på har "selectedSeat" i sig
+        if ($(this).hasClass("@settings.selectedSeatCss")) {
+            alert('This seat is already reserved');
+        }
+        // Hvis ikke toggler den bordet farve til grøn og placere selected i dens klasse
+        else {
+            $(this).toggleClass("@settings.selectingSeatCss");
+            $.each($('#place li.' + "@settings.selectingSeatCss" + ' a'), function (index, value) {
+                str.push($(this).attr('title'));
+            });
+            document.getElementById('tableNr').innerHTML = str.join(", ");
+
+        }
+    });
+
+    // Her tilføjes funktion til vores ene knap der viser hvilke borde der er valgte
+    $('#btnShow').click(function () {
+        var str = [];
+        // Selector alle borde, som indeholder selectingSeat som klasse og adder dem til str listen.
+        $.each($('#place li.' + "@settings.selectedSeatCss" + ' a, #place li.' + "@settings.selectingSeatCss" + ' a'), function (index, value) {
+            str.push($(this).attr('title'));
+        });
+        // Sender en besked på hjemmesiden med listen af dem der er valgt
+        alert(str.join(','));
+    })
+
+    // Den her har meget samme funktion som den før, her viser den dog alle der er valgte og reseveret
+    $('#btnShowNew').click(function () {
+        var str = [], item;
+        $.each($('#place li.' + "@settings.selectingSeatCss" + ' a'), function (index, value) {
+            item = $(this).attr('title');
+            str.push(item);
+        });
+        alert(str.join(','));
+    })
+
+
+</script>
+
+<!--
+<script>
     var settings = {
         rows: 5,
         cols: 15,
@@ -52,55 +119,24 @@
     };
 
     var init = function (reservedSeat) {
-                var str = [], seatNo, className;
-                for (i = 0; i < settings.rows; i++) {
-                    for (j = 0; j < settings.cols; j++) {
-                        seatNo = (i + j * settings.rows + 1);
-                        className = settings.seatCss + ' ' + settings.rowCssPrefix + i.toString() + ' ' + settings.colCssPrefix + j.toString();
-                        if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
-                            className += ' ' + settings.selectedSeatCss;
-                        }
-                        str.push('<li class="' + className + '"' +
-                                  'style="top:' + (i * settings.seatHeight).toString() + 'px;left:' + (j * settings.seatWidth).toString() + 'px">' +
-                                  '<a title="' + seatNo + '"></a>' +
-                                  '</li>');
-                    }
+        var str = [], seatNo, className;
+        for (i = 0; i < settings.rows; i++) {
+            for (j = 0; j < settings.cols; j++) {
+                seatNo = (i + j * settings.rows + 1);
+                className = settings.seatCss + ' ' + settings.rowCssPrefix + i.toString() + ' ' + settings.colCssPrefix + j.toString();
+                if ($.isArray(reservedSeat) && $.inArray(seatNo, reservedSeat) != -1) {
+                    className += ' ' + settings.selectedSeatCss;
                 }
-                $('#place').html(str.join(''));
+                str.push('<li class="' + className + '" ' +
+                    ' style="top:' + (i * settings.seatHeight).toString() + 'px;left:' + (j * settings.seatWidth).toString() + 'px">' + '<a title="' + seatNo + '"></a>' + '</li > ');}
+                }
+    $('#place').html(str.join(''));
             };
-            //case I: Show from starting
-            //init();
+    //case I: Show from starting
+    //init();
 
-            //Case II: If already booked
-            var bookedSeats = [5, 10, 25];
-            init(bookedSeats);
-            */
-
-    $('.' + settings.seatCss).click(function () {
-        if ($(this).hasClass(settings.selectedSeatCss)) {
-            alert('This seat is already reserved');
-        }
-        else {
-            $(this).toggleClass(settings.selectingSeatCss);
-        }
-    });
-
-    $('#btnShow').click(function () {
-        var str = [];
-        $.each($('#place li.' + settings.selectedSeatCss + ' a, #place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
-            str.push($(this).attr('title'));
-        });
-        alert(str.join(','));
-    })
-
-    $('#btnShowNew').click(function () {
-        var str = [], item;
-        $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
-            item = $(this).attr('title');
-            str.push(item);
-        });
-        alert(str.join(','));
-    })
-
-
+    //Case II: If already booked
+    var bookedSeats = [5, 10, 25];
+    init(bookedSeats);
 </script>
+-->

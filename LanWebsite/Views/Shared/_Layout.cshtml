@@ -16,46 +16,82 @@
     @{
         string path = HttpContext.Current.Request.Url.AbsolutePath;
     }
-    <nav class="nav">
+
+    <!-- Her laves vores navigations bar -->
+    <nav class="nav affix">
+        <!-- Placers i en container -->
         <div class="container">
             <div class="logo">
                 <a href="~/Home/Index">LANPARTY360</a>
             </div>
+            <!-- Her angives de valgmuligheder som man kan trykke på -->
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">OM OS</a></li>
+                    <li><a href="#">BILLET</a></li>
                 </ul>
             </div>
-            <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
         </div>
     </nav>
+    
+    <!-- Her angives det hvor vores HTML af siderne fra HomeController og BillingController skal renders -->
     <div class="">
         @RenderBody()
         <footer>
         </footer>
     </div>
 
+    <!-- Angiver bootstrap JavaScript til at køre på hjemmesiden -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 </body>
-</html>
+<!-- Site footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h6>About</h6>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel nisi nulla. Nam eu finibus eros, ut sollicitudin purus. Nullam non dolor non est auctor efficitur. Maecenas vitae leo facilisis, cursus velit vitae, sagittis purus. Ut a rhoncus tortor, at sagittis sem. Mauris eleifend nibh diam, vel euismod ligula aliquet ut. Quisque rhoncus orci vel quam pharetra, eget ullamcorper ipsum bibendum.</p>
+            </div>
 
-<script>
-    $(window).scroll(function () {
-        if ($(document).scrollTop() > 50) {
-            $('.nav').addClass('affix');
-            console.log("OK");
-        } else {
-            $('.nav').removeClass('affix');
-        }
-    });
-</script>
+            <div class="col-xs-6 col-md-3">
+                <h6></h6>
+                <ul class="footer-links">
+                    
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>LanParty360</h6>
+                <ul class="footer-links">
+                    <li><a href="#">OM OS</a></li>
+                    <li><a href="#">BILLET SALG</a></li>
+                    <li><a>KONTAKT OS</a></li>
+                    <li><a href="#">TIDLIGERE EVENTS</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">
+                    Copyright &copy; 2021 Alle rettigheder forbeholdt af LanParty360.
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

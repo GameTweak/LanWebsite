@@ -170,6 +170,7 @@
     <Compile Include="Models\Booking.cs">
       <DependentUpon>LanDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookingNr.cs" />
     <Compile Include="Models\LanDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
