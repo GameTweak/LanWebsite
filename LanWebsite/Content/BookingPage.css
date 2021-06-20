@@ -69,17 +69,26 @@
 }
 
 #tableNr {
-    text-align:center;
-    resize:none;
-    pointer-events:none;
-    font-size:3em;
-    padding:10px 10px 10px 10px;
+    text-align: center;
+    resize: none;
+    pointer-events: none;
+    font-size: 3em;
     border: 1px solid black;
+    vertical-align: middle;
+}
+
+#User {
+    text-align: center;
+    resize: none;
+    font-size: 3em;
+    border: 1px solid black;
+    vertical-align: middle;
 }
 
 .BookingContent {
     display:flex;
     justify-content:center;
+    align-content:center;
     padding-top:5%;
     padding-bottom:5%;
 }
@@ -87,4 +96,5 @@
 .BookingDiv {
     display:flex;
     justify-content:center;
+    margin-bottom:20px;
 }

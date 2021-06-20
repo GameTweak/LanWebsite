@@ -54,8 +54,8 @@
 <div class="BookingDiv">
     @using (Html.BeginForm("BookSeat", "Billing", FormMethod.Post))
     {
-        @Html.TextAreaFor(model => model.SeatID, new { id = "tableNr" })
-        @Html.TextBox("User")
+        @Html.TextArea("SeatID", new { id = "tableNr" })
+        @Html.TextArea("User", new { placeholder = "UserID"})
         <button id="select" runat="server" OnServerClick="Button_Click">Click here</button>
     }
 </div>
