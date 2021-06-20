@@ -82,7 +82,7 @@ body {
 }
 
 #generic_price_table {
-    margin: 50px 0 50px 0;
+    margin: 0 0 50px 0;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -446,4 +446,20 @@ body {
     background-color: #666;
     color: #FFF;
     text-decoration: none;
+}
+
+/* Styling af de Andre ting */
+.row .ticketTitle {
+    font-size:6em;
+    text-align:center;
+    padding-top:10px;
+    padding-bottom:50px;
+}
+
+.center-items {
+    justify-content:center;
+}
+
+p.text-fill {
+    font-size:2em;
 }
